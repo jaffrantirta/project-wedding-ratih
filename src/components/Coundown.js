@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import CardCountdown from './CardCoundown';
 
 export default function Countdown({ venue }) {
     const sectionRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+    // const [isVisible, setIsVisible] = useState(false);
     const targetDate = {
         apuan: {
             date: '2023-04-16T00:00:00Z'
