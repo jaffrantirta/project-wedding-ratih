@@ -6,6 +6,8 @@ import ProfilePicture from "./ProfilPicture";
 import InputField from "./InputField";
 import FallingFlower from "./FallingFlower";
 import Flower from "./Flower";
+import Carousel from "./Carousel";
+import Loader from "./Loader";
 
 export {
     CardCountdown,
@@ -15,5 +17,7 @@ export {
     ProfilePicture,
     InputField,
     FallingFlower,
-    Flower
+    Flower,
+    Carousel,
+    Loader
 }
