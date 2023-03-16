@@ -28,7 +28,7 @@ export default function Greeting() {
     }, [])
     const handleButtonClick = () => {
         togglePlay()
-        let data = { state: { venue: queryParams.has('vanue') ? queryParams.get('vanue') : 'denpasar' } }
+        let data = { state: { venue: queryParams.has('venue') ? queryParams.get('venue') : 'denpasar' } }
         navigate(`/invitation`, data)
     }
 

@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import Button from './Button';
 
 export default function Photo({ img, duration = '500', translateVisible = 'translate-y-0', translateInvisible = 'translate-y-24' }) {
+    const [isOpen, setIsOpen] = useState(false);
     const sectionRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
-    const [isOpen, setIsOpen] = useState(false);
 
     const handleImageClick = () => {
         setIsOpen(true);

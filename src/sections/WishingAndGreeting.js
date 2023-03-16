@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { ImgBorder3 } from '../assets'
 // import { API, Amplify } from 'aws-amplify'
 // import config from '../aws-exports'
 import { Button, ProfilePicture, InputField } from '../components'
@@ -85,8 +86,12 @@ export default function WishingAndGreeting() {
 
 
     return (
-        <section ref={sectionRef} className='h-fit px-5 pt-5 md:px-52 font-primary text-primary'>
-            <h1 className={`font-third text-5xl text-center mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>Ucapan dan Doa</h1>
+        <section ref={sectionRef} className='h-fit px-5 pt-5 md:px-52 font-primary text-primary bg-slate-700 py-20'>
+            <div className='flex justify-center'>
+                <img alt='' src={ImgBorder3} className={`w-1/2 md:w-1/4 h-auto`} />
+            </div>
+            <h1 className={`font-third text-3xl text-center mt-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>Kirimkan Pesan</h1>
+            <h1 className={`font-primary text-5xl text-center mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>UNTUK KAMI BERDUA</h1>
             <div className={`rounded-3xl border-2 border-primary p-10 flex flex-col justify-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>
                 <p className={`text-center text-lg font-bold mb-7 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>{comments.length} Comments</p>
                 <hr className='mb-7'></hr>
