@@ -9,6 +9,8 @@ import ImgOrnamentWhite1 from './ornament-white-1.png'
 import ImgOrnamentWhite2 from './ornament-white-2.png'
 import ImgSwirlLeftGold from './swirl_left_gold.png'
 import ImgSwirlRightGold from './swirl_right_gold.png'
+import ImgOmShanti from './om-shati-shanti-om.png'
+import ImgProkes from './Prokes.png'
 
 export {
     ImgBorder2,
@@ -22,4 +24,6 @@ export {
     ImgOswastyastu,
     ImgSwirlLeftGold,
     ImgSwirlRightGold,
+    ImgOmShanti,
+    ImgProkes
 }
