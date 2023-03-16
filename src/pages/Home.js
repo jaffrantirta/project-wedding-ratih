@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { DetailEvents, Gallery, GroomBride, Hero, Mepandes, Prokes, WishingAndGreeting } from '../sections'
 import Pray from '../sections/Pray'
 
 export default function Home() {
-
+    const { venue } = useLocation().state
+    console.log(venue, 'home');
+    useEffect(() => {
+        document.title = `Ananda Coel & Ratih D.R`;
+    }, [venue])
     return (
         <div>
-            <Hero />
+            <Hero venue={venue} />
             <GroomBride />
-            <Mepandes />
-            <DetailEvents />
+            {venue === 'denpasar' ? <></> : <Mepandes />}
+            <DetailEvents venue={venue} />
             <Pray />
-            <Gallery />
+            <Gallery venue={venue} />
             <WishingAndGreeting />
             <Prokes />
         </div>

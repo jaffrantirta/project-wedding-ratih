@@ -4,13 +4,12 @@ import CardCountdown from './CardCoundown';
 export default function Countdown({ venue }) {
     const sectionRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
-    console.log(isVisible);
     const targetDate = {
         apuan: {
-            date: '2023-04-16T00:00:00Z'
+            date: '2023-03-23T00:00:00Z'
         },
-        pupuan: {
-            date: '2023-04-17T00:00:00Z'
+        denpasar: {
+            date: '2023-04-01T00:00:00Z'
         }
     }
     useEffect(() => {
@@ -36,7 +35,7 @@ export default function Countdown({ venue }) {
                 node = null;
             }
         };
-    }, [sectionRef]);
+    }, [sectionRef, venue]);
     return (
         <section className='h-fit font-primary text-center text-white' ref={sectionRef}>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-5 md:px-20 py-10'>

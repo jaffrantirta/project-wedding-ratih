@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { Music } from '../assets';
 import { Carousel } from '../components';
 
 export default function Greeting() {
@@ -7,15 +8,15 @@ export default function Greeting() {
     const queryParams = new URLSearchParams(search);
     const navigate = useNavigate()
     const [isPlaying, setIsPlaying] = useState(false)
-    // const audio = new Audio(BgMusic)
+    const audio = new Audio(Music)
 
     const togglePlay = () => {
-        // if (isPlaying) {
-        //     audio.pause()
-        // } else {
-        //     audio.play()
-        // }
-        // setIsPlaying(!isPlaying)
+        if (isPlaying) {
+            audio.pause()
+        } else {
+            audio.play()
+        }
+        setIsPlaying(!isPlaying)
     }
     const images = [
         {
@@ -27,8 +28,7 @@ export default function Greeting() {
     }, [])
     const handleButtonClick = () => {
         togglePlay()
-        let data = { state: { version: queryParams.has('vanue') ? queryParams.get('vanue') : 'pupuan' } }
-        console.log(data);
+        let data = { state: { venue: queryParams.has('vanue') ? queryParams.get('vanue') : 'denpasar' } }
         navigate(`/invitation`, data)
     }
 
