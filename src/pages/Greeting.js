@@ -20,7 +20,7 @@ export default function Greeting() {
     }
     const images = [
         {
-            url: 'https://media.suara.com/pictures/653x366/2022/07/15/61080-via-vallen-dan-chevra-yolandi.jpg'
+            url: 'https://astikadharmabali.com/assets/bride_venue/3.png'
         },
     ]
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function Greeting() {
     return (
         <div className='h-screen'>
             <Carousel
-                isMiddle={true}
+                // is={true}
                 onClickButton={() => handleButtonClick()}
                 infoText={`*Mohon maaf apabila ada kesalahan penulisan nama/gelar`}
                 withButton={true}

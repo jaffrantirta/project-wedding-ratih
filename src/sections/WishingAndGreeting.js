@@ -1,38 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ImgBorder3 } from '../assets'
-// import { API, Amplify } from 'aws-amplify'
-// import config from '../aws-exports'
 import { Button, ProfilePicture, InputField } from '../components'
-
-// Amplify.configure(config)
+import comments from '../Comments';
 
 export default function WishingAndGreeting() {
-    // const projectName = 'ratihapi'
+    const [commentList, setCommentList] = useState(comments);
+    const [isLoading, setIsLoading] = useState(false)
+    const [commentsToShow, setCommentsToShow] = useState(5)
     const [name, setName] = useState('')
     const [comment, setComment] = useState('')
     const [attend, setAttend] = useState(true)
-    const [comments, setComments] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [commentsToShow, setCommentsToShow] = useState(5)
-    const addComment = async () => {
+    const addComment = () => {
         setIsLoading(true)
-        // try {
-        //     await API.post(projectName, '/comments', {
-        //         body: {
-        //             name: name,
-        //             comment: comment,
-        //             attend: attend
-        //         }
-        //     }).then(() => {
-        //         setName('')
-        //         setComment('')
-        //         setComments([{ name: name, comment: comment, attend: attend }, ...comments])
-        //         setIsLoading(false)
-        //     })
-        // } catch (error) {
-        //     setIsLoading(false)
-        //     console.error('Error creating comment:', error);
-        // }
+        const newComment = { id: commentList.length + 1, name, comment, attend };
+        setCommentList([...commentList, newComment]);
+        setIsLoading(false)
     }
     const sectionRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
@@ -53,11 +35,7 @@ export default function WishingAndGreeting() {
             observer.observe(node);
         }
 
-        // API.get(projectName, '/comments/id').then(response => {
-        //     setComments(response)
-        // }).catch(error => {
-        //     console.error('error : ' + error);
-        // })
+
 
         return () => {
             if (node) {
@@ -103,7 +81,7 @@ export default function WishingAndGreeting() {
                 </select>
                 <Button disabled={isLoading} text={`${isLoading ? "Mengirim..." : "Kirim"}`} onClick={() => addComment()} customStyle={`md:mx-10 md:mx-96 mb-5 ${isLoading ? "bg-gray-400 cursor-not-allowed" : ""} transition-all duration-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`} />
                 <div>
-                    {comments.map((item, index) => {
+                    {commentList.map((item, index) => {
                         if (index < commentsToShow) {
                             return (
                                 <div key={index} className='flex w-full border-b-2 p-2'>

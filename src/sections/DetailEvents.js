@@ -5,7 +5,7 @@ import CountDown from './CountDown'
 
 export default function DetailEvents({ venue }) {
     return (
-        <div className='bg-accentColor h-fit font-primary p-10'>
+        <div className='bg-accentColor bg-[url("https://astikadharmabali.com/assets/bride_venue/2.png")] bg-cover bg-center h-fit font-primary p-10'>
             <div className='bg-white bg-opacity-80 rounded-3xl p-10'>
                 <div className='grid grid-cols-4 md:grid-cols-3 justify-center place-items-center'>
                     <img alt='' src={ImgSwirlLeftGold} className='w-1/2 md:w-1/4 h-auto' />
