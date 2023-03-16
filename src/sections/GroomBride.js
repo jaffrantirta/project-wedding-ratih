@@ -3,7 +3,7 @@ import { ImgBorder3, ImgDevider, ImgOswastyastu } from '../assets'
 
 export default function GroomBride() {
     return (
-        <div className='bg-[url("/src/assets/images/NW5.png")] bg-primary bg-no-repeat bg-contain h-fit font-primary p-10 md:px-24 flex items-center justify-center'>
+        <div className='bg-[url("/src/assets/images/NW5.png")] bg-accentColor bg-no-repeat bg-contain h-fit font-primary p-10 md:px-24 flex items-center justify-center'>
             <div className='bg-white bg-opacity-90 rounded-3xl'>
                 <div className={`text-center p-10`}>
                     <img alt='' src={ImgDevider} className={`w-1/2 md:w-1/4 mx-auto`} />
@@ -17,7 +17,7 @@ export default function GroomBride() {
                                 className={`w-full md:w-1/2 h-auto`} />
                         </div>
                         <div className={``}>
-                            <h1 className='text-2xl md:text-5xl font-third mb-10 text-accentColor'>I Gede Ananda Eka Diana</h1>
+                            <h1 className='text-2xl md:text-5xl font-third mb-10 text-primary'>I Gede Ananda Eka Diana</h1>
                             <h1 className='text-xl mt-8'>Putra pertama dari empat bersaudara pasangan</h1>
                             <h1 className='text-md'>I Nyoman Kusuma Yudiana</h1>
                             <h1 className='text-md'>&</h1>
@@ -36,7 +36,7 @@ export default function GroomBride() {
                                 className={`w-full md:w-1/2 h-auto`} />
                         </div>
                         <div className={``}>
-                            <h1 className='text-2xl md:text-5xl font-third mb-10 text-accentColor'>Luh Gede Ratih Dian Rahayu</h1>
+                            <h1 className='text-2xl md:text-5xl font-third mb-10 text-primary'>Luh Gede Ratih Dian Rahayu</h1>
                             <h1 className='text-xl mt-8'>Putri pertama dari tiga bersaudara pasangan</h1>
                             <h1 className='text-md'>I Made Sunantra Yasa</h1>
                             <h1 className='text-md'>&</h1>

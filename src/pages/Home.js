@@ -1,5 +1,6 @@
 import React from 'react'
 import { DetailEvents, GroomBride, Hero, Mepandes } from '../sections'
+import Pray from '../sections/Pray'
 
 export default function Home() {
 
@@ -9,6 +10,7 @@ export default function Home() {
             <GroomBride />
             <Mepandes />
             <DetailEvents />
+            <Pray />
         </div>
     )
 }
