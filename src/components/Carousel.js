@@ -20,15 +20,14 @@ const Carousel = ({ withBorder = false, infoText, infoTextStyle, isTop = false, 
     };
 
     return (
-        <div className="w-full font-primary">
-            {/* <div className='relative'> */}
+        <div className="w-full font-primary relative">
             <Slider {...settings}>
                 {images.map((item, index) => {
                     return (
-                        <div key={index} className={`${bgColorImage}`}>
-                            {/* <div className={`absolute top-0 left-0 w-full h-full flex items-center justify-center ${isLoading ? '' : 'hidden'}`}>
+                        <div key={index} className={`${bgColorImage} relative`}>
+                            <div className={`absolute top-0 left-0 w-full h-full flex items-center justify-center ${isLoading ? '' : 'hidden'}`}>
                                 <Loader loadText={`Loading...`} />
-                            </div> */}
+                            </div>
                             <div>
                                 <img
                                     onLoad={() => setIsLoading(false)}
@@ -56,7 +55,6 @@ const Carousel = ({ withBorder = false, infoText, infoTextStyle, isTop = false, 
                 </div>
             </div>
         </div>
-        // </div>
     );
 };
 

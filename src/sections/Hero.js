@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ImgOrnamentWhite1, ImgOrnamentWhite2 } from '../assets'
 import { Carousel, Flower } from '../components'
 
 export default function Hero({ venue }) {
     const sectionRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
+    console.log(isVisible);
     useEffect(() => {
         let node = sectionRef.current;
         const observer = new IntersectionObserver(
