@@ -32,7 +32,22 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+.falling-flower {
+  animation: falling-flower 10s linear infinite;
+}
+
+@keyframes falling-flower {
+  0% {
+    transform: translateY(-50%) rotate(0);
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(720deg);
   }
 }

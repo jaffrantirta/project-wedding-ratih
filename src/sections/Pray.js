@@ -1,11 +1,10 @@
 import React from 'react'
+import { Flower } from '../components'
 
 export default function Pray() {
     return (
-        <div className='h-fit md:h-screen bg-primary grid grid-cols-1 md:grid-cols-2 font-primary'>
-            <div>
-
-            </div>
+        <div className='relative h-fit md:h-screen bg-primary grid grid-cols-1 md:grid-cols-2 font-primary'>
+            <Flower top={0} duration={8} />
             <div className='p-10'>
                 <div className='border-white border-4 w-full h-full p-1'>
                     <div className='border-white border-4 bg-contain bg-no-repeat bg-accentColor bg-[url("/src/assets/images/corner-1.png")] text-center p-10 w-full h-full flex justify-center flex-col'>

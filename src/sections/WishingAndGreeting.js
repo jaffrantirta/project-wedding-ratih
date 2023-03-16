@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 // import { API, Amplify } from 'aws-amplify'
-// import config from './../../aws-exports'
+// import config from '../aws-exports'
 import { Button, ProfilePicture, InputField } from '../components'
 
 // Amplify.configure(config)
 
 export default function WishingAndGreeting() {
-    const projectName = 'wedding'
+    // const projectName = 'ratihapi'
     const [name, setName] = useState('')
     const [comment, setComment] = useState('')
     const [attend, setAttend] = useState(true)
@@ -16,7 +16,7 @@ export default function WishingAndGreeting() {
     const addComment = async () => {
         setIsLoading(true)
         // try {
-        //     await API.post(projectName, '/comment', {
+        //     await API.post(projectName, '/comments', {
         //         body: {
         //             name: name,
         //             comment: comment,
@@ -52,7 +52,7 @@ export default function WishingAndGreeting() {
             observer.observe(node);
         }
 
-        // API.get(projectName, '/comment/name').then(response => {
+        // API.get(projectName, '/comments/id').then(response => {
         //     setComments(response)
         // }).catch(error => {
         //     console.error('error : ' + error);

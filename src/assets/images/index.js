@@ -11,6 +11,7 @@ import ImgSwirlLeftGold from './swirl_left_gold.png'
 import ImgSwirlRightGold from './swirl_right_gold.png'
 import ImgOmShanti from './om-shati-shanti-om.png'
 import ImgProkes from './Prokes.png'
+import ImgFlower from './flower.png'
 
 export {
     ImgBorder2,
@@ -25,5 +26,6 @@ export {
     ImgSwirlLeftGold,
     ImgSwirlRightGold,
     ImgOmShanti,
-    ImgProkes
+    ImgProkes,
+    ImgFlower
 }

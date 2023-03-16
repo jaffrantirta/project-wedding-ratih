@@ -4,6 +4,8 @@ import Photo from "./Photo";
 import Button from "./Button";
 import ProfilePicture from "./ProfilPicture";
 import InputField from "./InputField";
+import FallingFlower from "./FallingFlower";
+import Flower from "./Flower";
 
 export {
     CardCountdown,
@@ -11,5 +13,7 @@ export {
     Photo,
     Button,
     ProfilePicture,
-    InputField
+    InputField,
+    FallingFlower,
+    Flower
 }

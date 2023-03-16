@@ -1,9 +1,11 @@
 import React from 'react'
 import { ImgOrnamentWhite1, ImgOrnamentWhite2 } from '../assets'
+import { Flower } from '../components'
 
 export default function Hero() {
     return (
-        <div className='h-screen bg-primary flex items-center justify-center font-primary'>
+        <div className='h-screen relative bg-primary flex items-center justify-center font-primary'>
+            <Flower />
             <div className='text-center'>
                 <img alt='' src={ImgOrnamentWhite1} className='w-1/2 mx-auto' />
                 <div className='my-5 text-white'>

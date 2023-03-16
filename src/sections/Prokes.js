@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImgBorder2, ImgNw5, ImgOmShanti, ImgProkes } from '../assets'
+import { ImgBorder2, ImgOmShanti, ImgProkes } from '../assets'
 
 export default function Prokes() {
     return (
