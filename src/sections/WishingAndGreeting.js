@@ -88,7 +88,7 @@ export default function WishingAndGreeting() {
                                     <ProfilePicture initials={getInitials(item.name)} size="medium" />
                                     <div className='ml-2'>
                                         <p className='font-bold mb-3'>{item.name}</p>
-                                        <p className='text-sm text-slate-700'>{item.comment}</p>
+                                        <p className='text-sm text-slate-300'>{item.comment}</p>
                                         <p className='text-sm text-slate-400'>~ {item.attend === true ? 'Hadir' : 'Tidak Hadir'}</p>
                                     </div>
                                 </div>
