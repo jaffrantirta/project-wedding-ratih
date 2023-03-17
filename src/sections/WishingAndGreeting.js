@@ -1,7 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { ImgBorder3 } from '../assets'
 import { Button, ProfilePicture, InputField } from '../components'
 import comments from '../Comments';
+import { createClient } from '@supabase/supabase-js'
+import moment from 'moment';
+import 'moment/locale/id';
+
+moment.locale('id');
 
 export default function WishingAndGreeting() {
     const [commentList, setCommentList] = useState(comments);
@@ -10,15 +15,35 @@ export default function WishingAndGreeting() {
     const [name, setName] = useState('')
     const [comment, setComment] = useState('')
     const [attend, setAttend] = useState(true)
-    const addComment = () => {
-        setIsLoading(true)
-        const newComment = { id: commentList.length + 1, name, comment, attend };
-        setCommentList([...commentList, newComment]);
-        setIsLoading(false)
-    }
     const sectionRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
+
+    const supabaseUrl = 'https://bnfnwkhrhoyfrvgckanv.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJuZm53a2hyaG95ZnJ2Z2NrYW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzkwMjE0MjEsImV4cCI6MTk5NDU5NzQyMX0.Kw62XmNMGdAWydnI8j9uo5a8UwacdVweVNkRWp-k9xo'
+
+    const supabase = createClient(supabaseUrl, supabaseKey)
+
+
+    const addComment = async () => {
+        setIsLoading(true)
+        const newComment = { name, comment, attend };
+        const { error } = await supabase.from('comments').insert(newComment)
+        setIsLoading(false)
+        if (error) {
+            console.error(error)
+        } else {
+            getComments()
+        }
+    }
+    const getComments = useCallback(async () => {
+        const { data, error } = await supabase.from('comments').select('*')
+        setCommentList(data)
+        if (error) {
+            console.error(error)
+        }
+    }, [supabase])
     useEffect(() => {
+        getComments()
         let node = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -43,7 +68,7 @@ export default function WishingAndGreeting() {
                 node = null;
             }
         };
-    }, [sectionRef])
+    }, [sectionRef, getComments])
 
     const handleLoadMore = () => {
         setCommentsToShow(commentsToShow + 5)
@@ -59,7 +84,7 @@ export default function WishingAndGreeting() {
     }
 
     const buttonMore = () => {
-        return <Button text={`Load more...`} customStyle={`bg-slate-200 text-slate-700 mx-10 md:mx-96 my-5`} onClick={() => handleLoadMore()} />
+        return <Button text={`Load more...`} customStyle={`bg-slate-200 text-slate-900 mx-10 md:mx-96 my-5`} onClick={() => handleLoadMore()} />
     }
 
 
@@ -71,7 +96,7 @@ export default function WishingAndGreeting() {
             <h1 className={`font-third text-3xl text-center mt-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>Kirimkan Pesan</h1>
             <h1 className={`font-primary text-5xl text-center mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>UNTUK KAMI BERDUA</h1>
             <div className={`rounded-3xl border-2 border-primary p-10 flex flex-col justify-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>
-                <p className={`text-center text-lg font-bold mb-7 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>{comments.length} Comments</p>
+                <p className={`text-center text-lg font-bold mb-7 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}>{commentList.length} Comments</p>
                 <hr className='mb-7'></hr>
                 <InputField placeholder={`Nama*`} value={name} onChange={e => setName(e.target.value)} customStyle={`md:mx-10 mb-5 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`} />
                 <InputField isTextArea={true} placeholder={`Ucapan*`} value={comment} onChange={e => setComment(e.target.value)} customStyle={`md:mx-10 mb-5 rounded-3xl transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`} />
@@ -83,12 +108,15 @@ export default function WishingAndGreeting() {
                 <div>
                     {commentList.map((item, index) => {
                         if (index < commentsToShow) {
+                            let date = moment(item.created_at);
+                            let formattedDate = date.fromNow();
                             return (
                                 <div key={index} className='flex w-full border-b-2 p-2'>
                                     <ProfilePicture initials={getInitials(item.name)} size="medium" />
                                     <div className='ml-2'>
                                         <p className='font-bold mb-3'>{item.name}</p>
-                                        <p className='text-sm text-slate-300'>{item.comment}</p>
+                                        <p className='text-sm text-slate-500'>{formattedDate}</p>
+                                        <p className='text-md text-slate-300'>{item.comment}</p>
                                         <p className='text-sm text-slate-400'>~ {item.attend === true ? 'Hadir' : 'Tidak Hadir'}</p>
                                     </div>
                                 </div>
@@ -97,7 +125,7 @@ export default function WishingAndGreeting() {
                         return null
                     })}
                 </div>
-                {comments.length > commentsToShow ? buttonMore() : <></>}
+                {commentList.length > commentsToShow ? buttonMore() : <></>}
             </div>
         </section >
     )
