@@ -17,6 +17,8 @@ export default function Gallery({ venue }) {
             'https://astikadharmabali.com/assets/groom_venue/10.png',
             'https://astikadharmabali.com/assets/groom_venue/11.png',
             'https://astikadharmabali.com/assets/groom_venue/12.png',
+            'https://astikadharmabali.com/assets/groom_venue/13.png',
+            'https://astikadharmabali.com/assets/groom_venue/14.png',
         ],
         apuan: [
             'https://astikadharmabali.com/assets/bride_venue/1.png',
