@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <div>
             <Hero venue={venue} />
-            <GroomBride />
+            <GroomBride venue={venue} />
             {venue === 'denpasar' ? <></> : <Mepandes />}
             <DetailEvents venue={venue} />
             <Pray />

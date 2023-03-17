@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ImgBorder3, ImgDevider, ImgOswastyastu } from '../assets'
 
-export default function GroomBride() {
+export default function GroomBride({ venue }) {
     const sectionRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
     useEffect(() => {
@@ -34,7 +34,7 @@ export default function GroomBride() {
                 <div className={`text-center p-10`}>
                     <img alt='' src={ImgDevider} className={`w-1/2 md:w-1/4 mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-32'}`} />
                     <img alt='' src={ImgOswastyastu} className={`w-1/2 md:w-1/6 mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-32'}`} />
-                    <p className={`md:px-10 my-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-32'}`}>Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa kami bermaksud mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Pawiwahan (Pernikahan) dan Mepandes (Potong Gigi) </p>
+                    <p className={`md:px-10 my-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-32'}`}>Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa kami bermaksud mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Pawiwahan (Pernikahan) {venue == 'denpasar' ? '' : 'dan Mepandes (Potong Gigi)'} </p>
                     <div className='grid grid-cols-1 md:grid-cols-2 mt-14'>
                         <div className={`flex justify-center`}>
                             <img
