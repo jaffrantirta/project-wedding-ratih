@@ -17,6 +17,8 @@ export default function WishingAndGreeting() {
     const [attend, setAttend] = useState(true)
     const sectionRef = useRef(null)
     const [isVisible, setIsVisible] = useState(false)
+    const [lastFetchTime, setLastFetchTime] = useState(null)
+    const CACHE_EXPIRATION_TIME = 60000
 
     const supabaseUrl = 'https://bnfnwkhrhoyfrvgckanv.supabase.co'
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJuZm53a2hyaG95ZnJ2Z2NrYW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzkwMjE0MjEsImV4cCI6MTk5NDU5NzQyMX0.Kw62XmNMGdAWydnI8j9uo5a8UwacdVweVNkRWp-k9xo'
@@ -36,12 +38,17 @@ export default function WishingAndGreeting() {
         }
     }
     const getComments = useCallback(async () => {
+        if (commentList.length > 0 && lastFetchTime && (Date.now() - lastFetchTime) < CACHE_EXPIRATION_TIME) {
+            return
+        }
         const { data, error } = await supabase.from('comments').select('*')
-        setCommentList(data)
         if (error) {
             console.error(error)
+        } else {
+            setCommentList(data)
+            setLastFetchTime(Date.now())
         }
-    }, [supabase])
+    }, [supabase, commentList, lastFetchTime])
     useEffect(() => {
         getComments()
         let node = sectionRef.current;
